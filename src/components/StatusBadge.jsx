@@ -1,4 +1,5 @@
-export const StatusBadge = ({ status, variant = "default" }) => {
+
+const StatusBadge = ({ status, variant = "default" }) => {
   const statusConfig = {
     pending: {
       label: "Pending",
@@ -36,12 +37,12 @@ export const StatusBadge = ({ status, variant = "default" }) => {
       label: "Failed",
       className: "bg-red-100 text-red-800 border-red-200",
     },
-  }
+  };
 
   const config = statusConfig[status] || {
     label: status?.replace(/_/g, " ") || status,
     className: "bg-gray-100 text-gray-800 border-gray-200",
-  }
+  };
 
   return (
     <span
@@ -50,6 +51,7 @@ export const StatusBadge = ({ status, variant = "default" }) => {
       {status === "out_for_delivery" && (
         <span className="h-1.5 w-1.5 rounded-full bg-purple-500"></span>
       )}
+
       {status === "delivered" && (
         <svg
           className="h-3 w-3"
@@ -59,12 +61,16 @@ export const StatusBadge = ({ status, variant = "default" }) => {
         >
           <path
             fillRule="evenodd"
-            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l.707-.707a1 1 0 011.414 0L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l.707-.707a1 1 0 011.414 0L8 12.586l7.293-7.293a1 1 0 010 1.414z"
             clipRule="evenodd"
           />
         </svg>
       )}
+
       {config.label}
     </span>
-  )
-}
+  );
+};
+
+export default StatusBadge;
+
